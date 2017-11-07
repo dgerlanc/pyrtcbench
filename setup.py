@@ -17,15 +17,18 @@ setup(
     author_email='dgerlanc@enplusadvisors.com',
     description='Benchmarks for Postgres Round Trip Client-Side Copy',
     long_description=__doc__,
-    packages=find_packages(
-        exclude=["*.tests", "*.tests.*", "tests.*", "tests"]
-    ),
+    packages=find_packages(),
     zip_safe=True,
     include_package_data=True,
     install_requires=[
       'click',
       'psycopg2'
     ],
+    entry_points={
+        'console_scripts': [
+            'pyrtcbench = pyrtcbench.cli:cli'
+        ]
+    },
     platforms='any',
     classifiers=[
         'Intended Audience :: Developers',

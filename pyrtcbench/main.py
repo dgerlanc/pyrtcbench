@@ -7,7 +7,7 @@ from itertools import product
 
 import psycopg2
 
-from pyrtcbench.bcopy import bulk_read_write
+from .bcopy import bulk_read_write
 
 
 BenchmarkResult = namedtuple(
@@ -17,10 +17,7 @@ BenchmarkResult = namedtuple(
 )
 
 
-def main():
-    n_user_settings = ['1k', '10k', '50k'] # ['100k', '500k']
-    logging_types = ['logged', 'unlogged']
-    n_reps = 30
+def main(n_reps, n_user_settings, logging_types):
     benchmark_params = product(n_user_settings, logging_types)
     for n_users, _logging in benchmark_params:
         run_benchmark(
